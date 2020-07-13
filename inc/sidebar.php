@@ -30,7 +30,7 @@ if ($post) {
         ?>
 					<div class="popular clear">
 						<h3><a href="post.php?id=<?php echo $result['id']; ?>"><?php echo $result['title']; ?></a></h3>
-						<a href="post.php?id=<?php echo $result['id']; ?>"><img src="admin/upload/<?php echo $result['image']; ?>" alt="post image"/></a>
+						<a href="post.php?id=<?php echo $result['id']; ?>"><img src="admin/<?php echo $result['image']; ?>" alt="post image"/></a>
 						<?php echo $fm->textShorten($result['body'], 120); ?>
 					</div>
 				<?php }} else {

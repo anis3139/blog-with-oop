@@ -21,7 +21,7 @@ if ($post) {
         ?>
 				<h2><?php echo $result['title']; ?></h2>
 				<h4><?php echo $result['date']; ?> <a href="#"><?php echo $result['author']; ?></a></h4>
-				<a href="#"><img src="admin/upload/<?php echo $result['image']; ?>" alt="post image"/></a>
+				<a href="#"><img src="admin/<?php echo $result['image']; ?>" alt="post image"/></a>
 				<p><?php echo $result['body']; ?></p>
 
 				<div class="relatedpost clear">
@@ -33,7 +33,7 @@ if ($post) {
 					if($releted_post){
 						while($rresult=$releted_post->fetch_assoc()){
 					?>
-					<a href="post.php?id=<?php echo $rresult['id'];?>"><img src="admin/upload/<?php echo $rresult['image'];?>" alt="post image"/></a>
+					<a href="post.php?id=<?php echo $rresult['id'];?>"><img src="admin/<?php echo $rresult['image'];?>" alt="post image"/></a>
 					
 					<?php }}else{
 							echo "Have no releted post";

@@ -9,7 +9,7 @@
                     $title=mysqli_real_escape_string($db->link, $_POST['title']);
                     $cat=mysqli_real_escape_string($db->link, $_POST['cat']);
                     $body=mysqli_real_escape_string($db->link, $_POST['body']);
-                    $image=mysqli_real_escape_string($db->link, $_POST['image']);
+                   // $image=mysqli_real_escape_string($db->link, $_POST['image']);
                     $tags=mysqli_real_escape_string($db->link, $_POST['tags']);
                     $author=mysqli_real_escape_string($db->link, $_POST['author']);
                     if ($_SERVER["REQUEST_METHOD"] == "POST") {
