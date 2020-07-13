@@ -1,5 +1,17 @@
-﻿<?php include"inc/header.php"?>
+<?php include"inc/header.php"?>
 <?php include"inc/sidebar.php"?>
+
+<?php
+if(!isset($_GET['catid']) || $_GET['catid']==null){
+    header("location:catlist.php");
+} else{
+    $id=$_GET['catid'];
+}
+
+?>
+
+
+
         <div class="grid_10">
 		
             <div class="box round first grid">
@@ -13,21 +25,29 @@
             if(empty($name)){
                     echo "<span style='error'> Field Must ot be Empty! </span>";
                     } else{
-                        $query="INSERT INTO tbl_categoty(name) VALUES('$name')";
-                        $catinsert=$db->insert($query);
-                        if($catinsert){
-                            echo "<span style='sucsess'>  Data Inserted Successfully.. </span>";
+                        $query="UPDATE tbl_categoty SET name='$name' WHERE id='$id'";
+                        $updated_row=$db->update($query);
+                        if($updated_row){
+                            echo "<span style='sucsess'>  Data Updated Successfully.. </span>";
                         }else{
-                            echo "<span style='error'>  Data Not Inserted...</span>";
+                            echo "<span style='error'>  Data Not Updated...</span>";
                         }
                     }
                 }
             ?> 
+            <?php 
+            
+            $query="SELECT * FROM tbl_categoty where id=$id order by id desc";
+            $cat_result=$db->select($query);
+            while($result=$cat_result->fetch_assoc()){
+
+            
+            ?>
                  <form action="" method="post">
                     <table class="form">					
                         <tr>
                             <td>
-                                <input type="text" name="name" placeholder="Enter Category Name..." class="medium" />
+                                <input type="text" name="name" value="<?php echo $result['name']?>" class="medium" />
                             </td>
                         </tr>
 						<tr> 
@@ -37,6 +57,7 @@
                         </tr>
                     </table>
                     </form>
+                    <?php }?>
                 </div>
             </div>
         </div>

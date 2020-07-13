@@ -421,3 +421,12 @@ text-align: center;
   background: #be8723 none repeat scroll 0 0;
   color: #fff;
 }
+
+.sucsess{
+  color: blue;
+  font-size: 18px;
+}
+.error{
+  color: red;
+  font-size: 18px;
+}

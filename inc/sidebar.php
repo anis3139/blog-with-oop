@@ -6,7 +6,7 @@
 
 				<?php $cat_query = "select * from tbl_categoty limit 6";
 $category = $db->select($cat_query);
-if ($post) {
+if ($category) {
     while ($result_cat = $category->fetch_assoc()) {
         ?>
 						<li><a href="posts.php?category=<?php echo $result_cat['id']; ?>"><?php echo $result_cat['name']; ?></a></li>
@@ -31,11 +31,11 @@ if ($post) {
 					<div class="popular clear">
 						<h3><a href="post.php?id=<?php echo $result['id']; ?>"><?php echo $result['title']; ?></a></h3>
 						<a href="post.php?id=<?php echo $result['id']; ?>"><img src="admin/upload/<?php echo $result['image']; ?>" alt="post image"/></a>
-						<?php echo $fm->textShorten($result['body'],120); ?>
+						<?php echo $fm->textShorten($result['body'], 120); ?>
 					</div>
-				<?php }}else{
-				 header("Location:404.php");
-				}?>
+				<?php }} else {
+    header("Location:404.php");
+}?>
 
 			</div>
 

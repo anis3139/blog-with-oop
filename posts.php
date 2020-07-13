@@ -25,11 +25,13 @@ if (!isset($_GET['category']) || $_GET['category'] == NULL) {
 				<?php echo $result['body'];?>
 				</p>
 				<div class="readmore clear">
-				<a href="post.php?id=<?php echo $result['id'];?>">Read More</a>
+				<a href="post.php?id=<?php echo $result['id' ];?>">Read More</a>
 				</div>
 			</div>
                 <?php }}else{
-					 header("Location:404.php");
+					?>
+				<h2>No post available in this category</h2>
+				<?php
 				};?>
 		</div>
 <?php include 'inc/sidebar.php';?>
