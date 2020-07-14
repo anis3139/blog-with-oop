@@ -12,7 +12,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Basic Website</title>
+<?php
+if(isset($_GET['pageid'])){
+$pagetitleid=$_GET['pageid'];
+$query = "select * from tbl_page where id='$pagetitleid'";
+$pages = $db->select($query);
+if ($pages) {
+    while ($result = $pages->fetch_assoc()) {
+    ?>    
+	<title><?php echo $result['name']."-".TITLE;?></title>
+	<?php }}?>
+	<?php
+}else{ ?>
+	<title><?php echo "Home-".TITLE;?></title>
+
+<?php }
+?>
+
+
 	<meta name="language" content="English">
 	<meta name="description" content="It is a website about education">
 	<meta name="keywords" content="blog,cms blog">
@@ -110,7 +127,15 @@ if ($social) {
 <div class="navsection templete">
 	<ul>
 		<li><a id="active" href="index.php">Home</a></li>
-		<li><a href="about.php">About</a></li>	
-		<li><a href="contact.php">Contact</a></li>
+		<?php
+$query = "select * from tbl_page";
+$pages = $db->select($query);
+if ($pages) {
+    while ($result = $pages->fetch_assoc()) {
+    ?>    
+ <li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a></li>
+
+
+    <?php }}?>
 	</ul>
 </div>
