@@ -9,14 +9,30 @@
 			<li><a href="#">Privacy</a></li>
 		</ul>
 	  </div>
-	  <p>&copy; Copyright Training with live project.</p>
+	  <?php
+$query = "select * from tbl_footer where id='1'";
+$footer = $db->select($query);
+if ($footer) {
+    while ($result = $footer->fetch_assoc()) {
+
+		
+        ?>
+	  <p>&copy; <?php echo $result['note'];?> || <?php echo date('Y');?></p>
+	<?php }}?>
 	</div>
+	<?php
+$query = "select * from tbl_social where id='1'";
+$social = $db->select($query);
+if ($social) {
+    while ($result = $social->fetch_assoc()) {	
+        ?>
 	<div class="fixedicon clear">
-		<a href="http://www.facebook.com"><img src="images/fb.png" alt="Facebook"/></a>
-		<a href="http://www.twitter.com"><img src="images/tw.png" alt="Twitter"/></a>
-		<a href="http://www.linkedin.com"><img src="images/in.png" alt="LinkedIn"/></a>
-		<a href="http://www.google.com"><img src="images/gl.png" alt="GooglePlus"/></a>
+		<a href="<?php echo "https://".$result['fb'];?>"><img src="images/fb.png" alt="Facebook"/></a>
+		<a href="<?php echo "https://".$result['tw'];?>"><img src="images/tw.png" alt="Twitter"/></a>
+		<a href="<?php echo "https://".$result['ln'];?>"><img src="images/in.png" alt="LinkedIn"/></a>
+		<a href="<?php echo "https://".$result['gp'];?>"><img src="images/gl.png" alt="GooglePlus"/></a>
 	</div>
+	<?php }}?>
 <script type="text/javascript" src="js/scrolltop.js"></script>
 </body>
 </html>

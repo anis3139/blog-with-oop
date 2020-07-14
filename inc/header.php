@@ -20,6 +20,27 @@
 	<link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">	
 	<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="style.css">
+	<style>
+    .sucsess{
+  color: blue;
+  font-size: 18px;
+}
+.error{
+  color: red;
+  font-size: 18px;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  text-align: center;
+}
+</style>
 	<script src="js/jquery.js" type="text/javascript"></script>
 	<script src="js/jquery.nivo.slider.js" type="text/javascript"></script>
 
@@ -49,19 +70,35 @@ $(window).load(function() {
 <body>
 	<div class="headersection templete clear">
 		<a href="index.php">
+		<?php
+$query = "select * from title_slogan where id='1'";
+$blog_title = $db->select($query);
+if ($blog_title) {
+    while ($result = $blog_title->fetch_assoc()) {
+        ?>
 			<div class="logo">
-				<img src="images/logo.png" alt="Logo"/>
-				<h2>Website Title</h2>
-				<p>Our website description</p>
+				<img src="admin/<?php echo $result['logo'];?>" alt="Logo"/>
+				<h2><?php echo $result['title'];?></h2>
+				<p><?php echo $result['slogan'];?></p>
 			</div>
+	<?php }} ?>
 		</a>
 		<div class="social clear">
+<?php
+$query = "select * from tbl_social where id='1'";
+$social = $db->select($query);
+if ($social) {
+    while ($result = $social->fetch_assoc()) {
+
+		
+        ?>		 
 			<div class="icon clear">
-				<a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-				<a href="#" target="_blank"><i class="fa fa-google-plus"></i></a>
+				<a href="<?php echo "https://".$result['fb'];?>" target="_blank"><i class="fa fa-facebook"></i></a>
+				<a href="<?php echo "https://".$result['tw'];?>" target="_blank"><i class="fa fa-twitter"></i></a>
+				<a href="<?php echo "https://".$result['ln'];?>" target="_blank"><i class="fa fa-linkedin"></i></a>
+				<a href="<?php echo "https://".$result['gp'];?>" target="_blank"><i class="fa fa-google-plus"></i></a>
 			</div>
+	<?php }}?>
 			<div class="searchbtn clear">
 			<form action="search.php" method="get">
 				<input type="text" name="search" placeholder="Search keyword..."/>
