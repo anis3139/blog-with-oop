@@ -23,8 +23,19 @@ if ($pages) {
 	<title><?php echo $result['name']."-".TITLE;?></title>
 	<?php }}?>
 	<?php
-}else{ ?>
-	<title><?php echo "Home-".TITLE;?></title>
+}elseif(isset($_GET['id'])){
+	$pagetitleid=$_GET['id'];
+	$query = "select * from tbl_post where id='$pagetitleid'";
+	$postes = $db->select($query);
+	if ($postes) {
+		while ($result = $postes->fetch_assoc()) {
+		?>    
+		<title><?php echo $result['title']."-".TITLE;?></title>
+		<?php }}?>
+		<?php
+	}
+else{ ?>
+	<title><?php echo $fm->title()."-".TITLE;?></title>
 
 <?php }
 ?>
@@ -125,17 +136,28 @@ if ($social) {
 		</div>
 	</div>
 <div class="navsection templete">
+	<?php 
+	$path=$_SERVER['SCRIPT_FILENAME'];
+    $current_page=basename($path, '.php');
+	?>
 	<ul>
-		<li><a id="active" href="index.php">Home</a></li>
+		<li><a <?php if($current_page=='index'){echo 'id="active"';} ?> href="index.php">Home</a></li>
 		<?php
 $query = "select * from tbl_page";
 $pages = $db->select($query);
 if ($pages) {
     while ($result = $pages->fetch_assoc()) {
     ?>    
- <li><a href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a></li>
+ <li><a 
+ <?php
+ if(isset($_GET['pageid']) && $_GET['pageid']==$result['id']){
+  echo  'id="active"';
+ }
+ ?>
+ href="page.php?pageid=<?php echo $result['id']; ?>"><?php echo $result['name']; ?></a></li>
 
 
-    <?php }}?>
+	<?php }}?>
+	<li><a <?php if($current_page=='contact'){echo 'id="active"';} ?> href="contact.php">Contact</a></li>
 	</ul>
 </div>
