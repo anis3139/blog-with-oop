@@ -111,7 +111,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
         <div class="grid_12">
             <ul class="nav main">
                 <li class="ic-dashboard"><a href="index.php"><span>Dashboard</span></a> </li>
-                <li class="ic-form-style"><a href=""><span>User Profile</span></a></li>
+                <li class="ic-form-style"><a href="profile.php"><span>User Profile</span></a></li>
 				<li class="ic-typography"><a href="changepassword.php"><span>Change Password</span></a></li>
 				<li class="ic-grid-tables"><a href="inbox.php"><span>Inbox
 <?php
@@ -125,7 +125,15 @@ echo "(".$count.")";
 }
 ?>
                 </span></a></li>
-                <li class="ic-charts"><a href="postlist.php"><span>Visit Website</span></a></li>
+                <?php
+                if(Session::get('userroll')=='0'){ ?>
+<li class="ic-charts"><a href="adduser.php"><span>Add User</span></a></li>
+
+<?php
+                }
+                ?>
+                
+                <li class="ic-charts"><a href="userlist.php"><span>Userlist</span></a></li>
             </ul>
         </div>
         <div class="clear">

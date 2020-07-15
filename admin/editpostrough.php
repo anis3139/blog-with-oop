@@ -186,7 +186,7 @@ if(!isset($_GET['editpostid']) || $_GET['editpostid']==null){
                                 <label>Author Name</label>
                             </td>
                             <td>
-                                <input type="text" name="author" value="<?php echo $ep_result['author'];?>" class="medium" />
+                                <input readonly type="text" name="author" value="<?php echo Session::get('name');?>" class="medium" />
                             </td>
                         </tr>
 						<tr>

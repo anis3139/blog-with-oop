@@ -40,59 +40,11 @@ else{ ?>
 <?php }
 ?>
 
+<?php include 'scripts/meta.php'; ?>
+<?php include 'scripts/css.php'; ?>
+<?php include 'scripts/js.php'; ?>
 
-	<meta name="language" content="English">
-	<meta name="description" content="It is a website about education">
-	<meta name="keywords" content="blog,cms blog">
-	<meta name="author" content="Delowar">
-	<link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.css">	
-	<link rel="stylesheet" href="css/nivo-slider.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="style.css">
-	<style>
-    .sucsess{
-  color: blue;
-  font-size: 18px;
-}
-.error{
-  color: red;
-  font-size: 18px;
-}
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-  text-align: center;
-}
-</style>
-	<script src="js/jquery.js" type="text/javascript"></script>
-	<script src="js/jquery.nivo.slider.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-$(window).load(function() {
-	$('#slider').nivoSlider({
-		effect:'random',
-		slices:10,
-		animSpeed:500,
-		pauseTime:5000,
-		startSlide:0, //Set starting Slide (0 index)
-		directionNav:false,
-		directionNavHide:false, //Only show on hover
-		controlNav:false, //1,2,3...
-		controlNavThumbs:false, //Use thumbnails for Control Nav
-		pauseOnHover:true, //Stop animation while hovering
-		manualAdvance:false, //Force manual transitions
-		captionOpacity:0.8, //Universal caption opacity
-		beforeChange: function(){},
-		afterChange: function(){},
-		slideshowEnd: function(){} //Triggers after all slides have been shown
-	});
-});
-</script>
+	
 </head>
 
 <body>
